@@ -5,6 +5,7 @@ class Solution(object):
         :rtype: List[int]
         """
         # solution with O(1) space with O(n) time complexity
+        # Boyer–Moore Voting Algorithmt which states that n/2 occurrence = 1 element only and in this problem n/3 occurrence = 2 element only.
 
         cand1,cand2, count1, count2 = None, None, 0, 0
 
