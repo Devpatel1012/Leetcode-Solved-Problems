@@ -106,10 +106,10 @@ class Solution:
             d[x + k + 1] = d.get(x + k + 1, 0) - 1
         
         s = 0
-        ans = 0
+        answer = 0
         for x in sorted(d.keys()):
             s += d[x]
             freq_here = cnt.get(x, 0)
-            ans = max(ans, min(s, freq_here + numOperations))
+            answer = max(answer, min(s, freq_here + numOperations))
         
-        return ans
+        return answer
