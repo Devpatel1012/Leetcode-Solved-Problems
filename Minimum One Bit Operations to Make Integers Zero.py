@@ -13,4 +13,4 @@ class Solution(object):
         k -= 1
         return 2 ** (k+1) - 1 - self.minimumOneBitOperations(2**k^n)
 
-        ## I done it but the logic behind this not clear yet get back to this problem and solve or understand it in future!!
+        ## I done it but the logic behind this not clear yet get back to this problem and solve or understand it in future!! 
