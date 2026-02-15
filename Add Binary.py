@@ -39,22 +39,40 @@ __import__("atexit").register(lambda: open("display_runtime.txt", "w").write("0"
 #             result = '1' + result
 
 #         return result
-__import__("atexit").register(lambda: open("display_runtime.txt", "w").write("0"))
+# __import__("atexit").register(lambda: open("display_runtime.txt", "w").write("0"))
 
+# class Solution(object):
+#     def addBinary(self, a, b):
+#         result = ""
+#         carry = 0
+#         i = len(a) - 1
+#         j = len(b) - 1
+
+#         while i >= 0 or j >= 0 or carry:
+#             m = int(a[i]) if i >= 0 else 0
+#             n = int(b[j]) if j >= 0 else 0
+#             total = m + n + carry
+#             result = str(total % 2) + result
+#             carry = total // 2
+#             i -= 1
+#             j -= 1
+
+#         return result
 class Solution(object):
     def addBinary(self, a, b):
-        result = ""
+        s = []
         carry = 0
         i = len(a) - 1
         j = len(b) - 1
 
         while i >= 0 or j >= 0 or carry:
-            m = int(a[i]) if i >= 0 else 0
-            n = int(b[j]) if j >= 0 else 0
-            total = m + n + carry
-            result = str(total % 2) + result
-            carry = total // 2
-            i -= 1
-            j -= 1
+            if i >= 0:
+                carry += int(a[i])
+                i -= 1
+            if j >= 0:
+                carry += int(b[j])
+                j -= 1
+            s.append(str(carry % 2))
+            carry //= 2
 
-        return result
+        return ''.join(reversed(s))
