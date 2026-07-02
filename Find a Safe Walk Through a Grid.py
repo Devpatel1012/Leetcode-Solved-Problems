@@ -1,0 +1,35 @@
+from collections import deque
+
+class Solution(object):
+    def findSafeWalk(self, grid, health):
+        n, m = len(grid), len(grid[0])
+
+        INF = float("inf")
+        dist = [[INF] * m for _ in range(n)]
+
+        dq = deque()
+
+        # Cost of starting cell
+        dist[0][0] = grid[0][0]
+        dq.append((0, 0))
+
+        directions = [(1,0), (-1,0), (0,1), (0,-1)]
+
+        while dq:
+            x, y = dq.popleft()
+
+            for dx, dy in directions:
+                nx, ny = x + dx, y + dy
+
+                if 0 <= nx < n and 0 <= ny < m:
+                    newCost = dist[x][y] + grid[nx][ny]
+
+                    if newCost < dist[nx][ny]:
+                        dist[nx][ny] = newCost
+
+                        if grid[nx][ny] == 0:
+                            dq.appendleft((nx, ny))
+                        else:
+                            dq.append((nx, ny))
+
+        return dist[n-1][m-1] < health
