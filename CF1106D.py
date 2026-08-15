@@ -24,4 +24,4 @@ while pq:
             visited[v] = True
             heapq.heappush(pq, v)
 
-print()
+print() 
